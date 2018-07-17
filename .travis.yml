@@ -11,7 +11,7 @@ before_install:
   - sudo apt-get install bc git
 
 script:
-  - git clone git://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git linux-mediatek
+  - git clone git@github.com:mbgg/linux-mediatek.git linux-mediatek
   - cd linux-mediatek
   - git checkout for-next
   - export ARCH=arm 
