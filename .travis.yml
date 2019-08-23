@@ -18,4 +18,3 @@ script:
   - export CROSS_COMPILE=arm-linux-gnueabihf- 
   - make defconfig
   - make dtbs
-  - make all
