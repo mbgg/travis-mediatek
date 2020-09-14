@@ -11,10 +11,12 @@ before_install:
   - sudo apt-get install bc git
 
 script:
-  - git clone https://github.com/mbgg/linux-mediatek.git linux-mediatek
-  - cd linux-mediatek
+  #  - git clone https://github.com/mbgg/linux-mediatek.git linux-mediatek
+  - git clone https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
+  - cd linux
   - git checkout for-next
   - export ARCH=arm64
   - export CROSS_COMPILE=aarch64-linux-gnu-
   - make defconfig
-  - make -j$(nproc --all) all
+  - make -j$(nproc --all) Image 
+  - make -j$(nproc --all) drivers/soc/mediatek/
