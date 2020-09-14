@@ -4,26 +4,26 @@ os:
   - linux
 
 before_script:
+  sudo apt-get install bc git
+
   - if [[ "${ARCH}" == "arm64" ]]; then
-      wget -c https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-linux-gnu/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz
-      tar xf gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz
-      export PATH=$PATH:$PWD/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu/bin/
-      aarch64-linux-gnu-gcc --version
-      sudo apt-get install bc git
-      export ARCH=arm64
-      export CROSS_COMPILE=aarch64-linux-gnu-
-      DTBS="mediatek/*.dtb"
+      wget -c https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-linux-gnu/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz &&
+      tar xf gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz &&
+      export PATH=$PATH:$PWD/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu/bin/ &&
+      aarch64-linux-gnu-gcc --version &&
+      export ARCH=arm64 &&
+      export CROSS_COMPILE=aarch64-linux-gnu- &&
+      DTBS="mediatek/*.dtb";
     fi
 
   - if [[ "${ARCH}" == "arm" ]]; then
-      wget -c https://releases.linaro.org/components/toolchain/binaries/5.3-2016.02/arm-linux-gnueabihf/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz
-      tar xf gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz
-      export PATH=$PATH:$PWD/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/
-      arm-linux-gnueabihf-gcc --version
-      sudo apt-get install bc git
-      export ARCH=arm 
-      export CROSS_COMPILE=arm-linux-gnueabihf- 
-      DTBS="mt*.dtb"
+      wget -c https://releases.linaro.org/components/toolchain/binaries/5.3-2016.02/arm-linux-gnueabihf/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz &&
+      tar xf gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz &&
+      export PATH=$PATH:$PWD/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/ &&
+      arm-linux-gnueabihf-gcc --version &&
+      export ARCH=arm &&
+      export CROSS_COMPILE=arm-linux-gnueabihf- &&
+      DTBS="mt*.dtb";
     fi
 
 script:
