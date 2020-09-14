@@ -3,9 +3,10 @@ language: c
 os:
   - linux
 
-before_script:
+before_install:
   sudo apt-get install bc git
 
+before_script:
   - if [[ "${ARCH}" == "arm64" ]]; then
       wget -c https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-linux-gnu/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz &&
       tar xf gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz &&
