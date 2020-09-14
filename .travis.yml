@@ -19,4 +19,7 @@ script:
   - export CROSS_COMPILE=aarch64-linux-gnu-
   - make defconfig
   - make -j$(nproc --all) Image 
+  - make allyesconfig
+  - make -j$(nproc --all) drivers/soc/mediatek/
+  - make allmodconfig
   - make -j$(nproc --all) drivers/soc/mediatek/
