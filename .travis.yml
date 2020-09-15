@@ -13,7 +13,7 @@ before_script:
       export PATH=$PATH:$PWD/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu/bin/ &&
       aarch64-linux-gnu-gcc --version &&
       export ARCH=arm64 &&
-      export CROSS_COMPILE=aarch64-linux-gnu- &&
+      export CROSS_COMPILE=aarch64-linux-gnu- ;
     fi
 
   - if [[ "${ARCH}" == "arm" ]]; then
@@ -22,7 +22,7 @@ before_script:
       export PATH=$PATH:$PWD/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/ &&
       arm-linux-gnueabihf-gcc --version &&
       export ARCH=arm &&
-      export CROSS_COMPILE=arm-linux-gnueabihf- &&
+      export CROSS_COMPILE=arm-linux-gnueabihf- ;
     fi
 
 script:
