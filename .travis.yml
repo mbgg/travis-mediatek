@@ -14,7 +14,6 @@ before_script:
       aarch64-linux-gnu-gcc --version &&
       export ARCH=arm64 &&
       export CROSS_COMPILE=aarch64-linux-gnu- &&
-      DTBS="mediatek/*.dtb";
     fi
 
   - if [[ "${ARCH}" == "arm" ]]; then
@@ -24,27 +23,38 @@ before_script:
       arm-linux-gnueabihf-gcc --version &&
       export ARCH=arm &&
       export CROSS_COMPILE=arm-linux-gnueabihf- &&
-      DTBS="mt*.dtb";
     fi
 
 script:
   - git clone https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
   - cd linux
   - git checkout for-next
-  - make defconfig
-  - make ${DTBS}
-  - make allyesconfig
-  - make -j$(nproc --all) drivers/soc/mediatek/
-  - make allmodconfig
-  - make -j$(nproc --all) drivers/soc/mediatek/
+  - make ${CONFIG}
+  - make -j$(nproc --all) ${TARGET}
 
 matrix:
   include:
-    - name: "arm64"
+    - name: "arm64 soc drivers"
       env:
         - ARCH="arm64"
+          CONFIG="allmodconfig"
+          TARGET="drivers/soc/mediatek/"
 
-    - name: "arm"
+    - name: "arm64 soc dtbs"
+      env:
+        - ARCH="arm64"
+          CONFIG="defconfig"
+          TARGET="mediatek/*.dtb"
+
+    - name: "arm soc drivers"
       env:
         - ARCH="arm"
+          CONFIG="allmodconfig"
+          TARGET="drivers/soc/mediatek/"
+
+    - name: "arm soc dtbs"
+      env:
+        - ARCH="arm"
+          CONFIG="defconfig"
+          TARGET="mt*.dtb"
 
