@@ -34,6 +34,8 @@ script:
 
 matrix:
   include:
+
+    # ARM64
     - name: "arm64 soc drivers"
       env:
         - ARCH="arm64"
@@ -46,12 +48,19 @@ matrix:
           CONFIG="defconfig"
           TARGET="mediatek/*.dtb"
 
-    - name: "arm64 all"
+    - name: "arm64 all modules"
       env:
         - ARCH="arm64"
           CONFIG="defconfig"
-          TARGET="all"
+          TARGET="modules"
 
+    - name: "arm64 Image"
+      env:
+        - ARCH="arm64"
+          CONFIG="defconfig"
+          TARGET="Image"
+
+    # ARM32
     - name: "arm32 soc drivers"
       env:
         - ARCH="arm"
@@ -64,9 +73,15 @@ matrix:
           CONFIG="defconfig"
           TARGET="mt*.dtb"
 
-    - name: "arm32 all"
+    - name: "arm32 all modules"
       env:
         - ARCH="arm"
           CONFIG="defconfig"
-          TARGET="all"
+          TARGET="modules"
+
+    - name: "arm32 zImage"
+      env:
+        - ARCH="arm"
+          CONFIG="defconfig"
+          TARGET="zImage"
 
