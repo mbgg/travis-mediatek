@@ -46,15 +46,27 @@ matrix:
           CONFIG="defconfig"
           TARGET="mediatek/*.dtb"
 
-    - name: "arm soc drivers"
+    - name: "arm64 all"
+      env:
+        - ARCH="arm64"
+          CONFIG="defconfig"
+          TARGET="all"
+
+    - name: "arm32 soc drivers"
       env:
         - ARCH="arm"
           CONFIG="allmodconfig"
           TARGET="drivers/soc/mediatek/"
 
-    - name: "arm soc dtbs"
+    - name: "arm32 soc dtbs"
       env:
         - ARCH="arm"
           CONFIG="defconfig"
           TARGET="mt*.dtb"
+
+    - name: "arm32 all"
+      env:
+        - ARCH="arm"
+          CONFIG="defconfig"
+          TARGET="all"
 
