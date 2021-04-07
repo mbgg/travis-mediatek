@@ -4,7 +4,7 @@ os:
   - linux
 
 before_install:
-  sudo apt-get install bc git mpc
+  sudo apt-get install bc git mpc libmpc-dev
 
 before_script:
   - if [[ "${ARCH}" == "arm64" ]]; then
