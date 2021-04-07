@@ -4,7 +4,7 @@ os:
   - linux
 
 before_install:
-  sudo apt-get install bc git mpc libmpc-dev
+  sudo apt-get install bc git mpc libmpc-dev gcc-arm-linux-gnueabihf
 
 before_script:
   - if [[ "${ARCH}" == "arm64" ]]; then
@@ -17,10 +17,9 @@ before_script:
     fi
 
   - if [[ "${ARCH}" == "arm" ]]; then
-      wget -c https://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabihf.tar.xz &&
-      tar xf gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabihf.tar.xz &&
-      export PATH=$PATH:$PWD/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabihf/bin/ &&
-      arm-linux-gnueabihf-gcc --version &&
+    #      wget -c https://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabihf.tar.xz &&
+    #      tar xf gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabihf.tar.xz &&
+    #  export PATH=$PATH:$PWD/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabihf/bin/ &&
       export ARCH=arm &&
       export CROSS_COMPILE=arm-linux-gnueabihf- ;
     fi
